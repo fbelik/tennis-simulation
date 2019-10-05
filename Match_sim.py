@@ -112,5 +112,36 @@ def match(p,q,num):
             matchscore = [0,0,0,0,0,0,0,0,0,0,0,0]
     print("Player p won %i out of %i matches or %f percent" % (matches_won,num,100.000*matches_won/num))
 
-match(0.5,0.5,1)
-i = input()
+invalid = True
+p = input("Probability p of winning on serve [0,1]:  ")
+while (invalid):
+    try:
+        if (float(p) >= 0 and float(p) <= 1):
+            invalid = False
+            p = float(p)
+    except ValueError:
+            p = input("Invalid entry, enter p win probability [0,1]:  ")
+
+invalid = True
+q = input("Probability q of winning on serve [0,1]:  ")
+while (invalid):
+    try:
+        if (float(q) >= 0 and float(q) <= 1):
+            invalid = False
+            q = float(q)
+    except ValueError:
+            q = input("Invalid entry, enter q win probability [0,1]:  ")
+
+invalid = True
+num_matches = input("How many matches to be played:  ")
+while (invalid):
+    try:
+        if (int(num_matches) >= 1):
+            invalid = False
+            num_matches = int(num_matches)
+    except ValueError:
+        num_matches = input("Invalid entry, how many matches to be played:  ")
+
+
+match(p, q, num_matches)
+input()
